@@ -6,7 +6,7 @@
 
 ### Reading data
 
-```
+```stata
 use *sean.dta*
 summ zscore
 gen byte high=zscore>=1.5
