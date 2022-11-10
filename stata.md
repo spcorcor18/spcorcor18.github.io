@@ -1,6 +1,6 @@
 # Stata code
 
-[Custom foo description](#getting-started)
+[Custom foo description](#more-2)
 
 ## Getting started
 
@@ -22,3 +22,7 @@ gen byte high=zscore>=1.5
 	gen byte high=zscore>=1.5
 }
 ```
+
+### More 1
+
+### More 2
