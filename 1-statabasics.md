@@ -26,7 +26,7 @@ Note: `sqrt` is one of Stata's many functions.
 Abbreviations: Stata will accept abbreviated commands. You can use as few letters as you like, so long as the abbreviation remains unique to one command. If you use abbreviations, I recommend using at least as many letters that are needed for others reading your syntax to recognize the command.
 
 <code style="display:block; white-space:pre-wrap;padding:10px;color: crimson">
- di 2 + 2 <br>
+ di 2 + 2 
  dis <em>sqrt(49)</em> + 10
 </code>
 
