@@ -56,41 +56,43 @@ Stata has some built-in datasets you can use to learn Stata. Type `help dta_exam
 
 	sysuse auto.dta
 
+### Saving a Stata dataset
 
+    save "C:\data\my file name.dta"
+    save "C:\data\anotherfile.dta", replace
 
+If the file already exists and you want to replace it with the version currently in memory, use the `replace` option. The same rule for quotes applies as in #4.
 
-5.  Saving a Stata data file. If the file already exists and you want to replace it with the version currently in memory, use the replace option. The same rule for quotes applies as in #4.
+## Closing a Stata dataset
 
-save “C:\data\my file name.dta”
-save “C:\data\anotherfile.dta”, replace
+To close a dataset (remove it from memory) use the command `clear`. This takes it out of memory, but does not delete it from your disk. As with any other file, don't "clear" data from memory if you have changes that you intended to save.
 
-6.  To close a dataset (remove it from memory) use the command clear. This takes it out of memory, but does not delete it from your disk. As with any other file, don’t “clear” data from memory if you have changes that you intended to save.
+## Reviewing the contents of a dataset
 
-7.  Reviewing the contents of a dataset – use the Variables and Properties windows, the Variables manager (Data  Variables Manager), and/or these commands:
+Reviewing the contents of a dataset – use the Variables and Properties windows, the Variables manager (Data  Variables Manager), and/or these commands:
 
-browse      (allows you to view the data like a spreadsheet)
-edit            (allows you to edit the data like a spreadsheet—not advised)
-list            (lists entire dataset in the Results window—not advised)
-list in 1/10    (lists observations 1-10 only)
-browse var1 var2 (view only the variables var1 and var2 like a spreadsheet)
-list var1 var2  (lists only the variables var1 and var2)
+    browse      (allows you to view the data like a spreadsheet)
+    edit            (allows you to edit the data like a spreadsheet—not advised)
+    list            (lists entire dataset in the Results window—not advised)
+    list in 1/10    (lists observations 1-10 only)
+    browse var1 var2 (view only the variables var1 and var2 like a spreadsheet)
+    list var1 var2  (lists only the variables var1 and var2)
 
-describe        (basic information about variables—like a table of contents)
-describe varnames (basic information about specific variables)
-desc, short (example of abbreviated command name and option)
+    describe        (basic information about variables—like a table of contents)
+    describe varnames (basic information about specific variables)
+    desc, short (example of abbreviated command name and option)
 
-codebook varname    (to get a little more information about a variable)
-inspect varname (to get a little more information about a variable)
-count           (to see the number of observations)
-count if condition  (to see the number of obs. where a condition is true)
+    codebook varname    (to get a little more information about a variable)
+    inspect varname (to get a little more information about a variable)
+    count           (to see the number of observations)
+    count if condition  (to see the number of obs. where a condition is true)
 
-    
 Note that Stata is case-sensitive! You must type variable names exactly as they appear in the 
 Variables window.
 
 Numeric variables are stored in different ways, depending on the size and precision of values contained in the variable. The integer types (in order of size) are: byte, int, and long. The real number types (in order of precision) are: float and double.
 
-8.  Simple descriptive statistics, tables,  and frequency distributions
+### Simple descriptive statistics, tables,  and frequency distributions
 
 summarize
 sum varnames
