@@ -7,7 +7,8 @@
 * Review, Variables, Properties, and Results windows
 * Paging up/down in the Command window to pull up recent commands
 * Double-clicking commands in the Review window
- 
+{: .lh-0 }
+
 ###	Getting help: syntax
 
     help
