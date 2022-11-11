@@ -28,7 +28,7 @@ Abbreviations: Stata will accept abbreviated commands. You can use as few letter
 
 <pre>
  di 2 + 2
- dis *sqrt(49)* + 10
+ dis <em>sqrt(49)</em> + 10
 </pre>
 
 Common mathematical operators include +, -, \*, and /.  The exponent symbol is \^, for example: `di 7^2`. For longer expressions, use parentheses to make the intended order of operations clear. For example: `di (7+2)*4`. Type `help functions` to see a complete list of functions and operations.
