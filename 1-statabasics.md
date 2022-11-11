@@ -37,7 +37,7 @@ You may also use `display` for text expressions, for example:
 
 ### Opening a data file in Stata format (.dta file)
 
-```stata
+```s
 use C:\data\myfilename.dta
 use http://www.stata-press.com/data/r9/census2
 ```
