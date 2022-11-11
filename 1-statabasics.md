@@ -1,3 +1,15 @@
+<head>
+<style>
+code {
+  font-family: Consolas,"courier new";
+  color: crimson;
+  background-color: #f1f1f1;
+  padding: 20px;
+  font-size: 105%;
+}
+</style>
+</head>
+
 # 1 - Stata basics
 
 
