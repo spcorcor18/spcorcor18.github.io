@@ -115,7 +115,7 @@ The `if` clause tells Stata to execute a command only for cases where the `if` c
 
 Note equality conditions require two equals signs. An inequality condition (“not equal to”) requires `~=` or `!=`. Conditions can include > or < signs, as well as greater-than-or-equal-to (>=) and less-than-or-equal-to (<=) signs.
 
-You can also include AND or OR conditions in a statement, where AND is designated by a “&” and OR is designated by a “|”. Examples:
+You can also include AND or OR conditions in a statement, where AND is designated by a “&” and OR is designated by a "\|". Examples:
 
     sum enroll if state==”NY” | state==”NJ” | state==”CT”
     sum puptch if state==”NY” & enroll>250
@@ -127,36 +127,37 @@ Be very careful when specifying the logic of a complex “if” clause. Use pare
     sum enroll if (state==”NY” | state==”NJ”) & enroll>1000
 {: .lh-tight }
 
-Stata has special notation for missing values that depend on whether the variable is numeric or a string. If numeric, missing values are represented by a period. If string, missing values are represented by a pair of double quotes, as shown below.
+Stata has special notation for **missing values** that depend on whether the variable is numeric or a string. If numeric, missing values are represented by a period. If string, missing values are represented by a pair of double quotes, as shown below.
 
     count if numvar1==. 
     summ var2 if numvar1~=.
-    list var1 var2 if strvar1==””
+    list var1 var2 if strvar1==""
 {: .lh-tight }
 
-### Designating the order of variables listed in the Variables window 
+### Variable lists
 
-This is useful when your dataset contains a large number of variables. You can also sort the viewing order of variables (temporarily) in the Variables window by clicking on the column you wish to sort by (e.g., variable name or variable label).
+You can change the order of variables listed in the Variables window; this is useful when your dataset contains a large number of variables. You can also sort the viewing order of variables (temporarily) in the Variables window by clicking on the column you wish to sort by (e.g., variable name or variable label).
 
     order varlist
     aorder              (alphabetizes list of variables)
 {: .lh-tight }
 
-The order of variables in the Variables window is important when you wish to use variable lists as shorthand. For example, if variables var1 through var5 are sorted in alphabetical order in the Variables window, then the following two commands are equivalent:
+The order of variables in the Variables window is important when you wish to use **variable lists** as shorthand. For example, if variables var1 through var5 are sorted in alphabetical order in the Variables window, then the following two commands are equivalent:
 
     sum var1-var5
     sum var1 var2 var3 var4 var5
 {: .lh-tight }
 
-Stata refers to var1-var5 as a “varlist”. The syntax indicates to Stata that it is a list of variables. Another type of varlist uses the wildcard symbol, e.g.: sum var* Here, you’re telling Stata to execute the command for all variables starting with “var”.
+Stata refers to var1-var5 as a "varlist". The syntax indicates to Stata that it is a list of variables. Another type of varlist uses the wildcard symbol, e.g.: `sum var*` Here, you’re telling Stata to execute the command for all variables starting with "var".
 
-11. Dropping variables and cases from the dataset (or keeping specific variables/cases). E.g.:
+### Dropping variables and cases from the dataset (or keeping specific variables/cases)
 
-drop varlist            (drops specified variables from the dataset)
-drop if condition       (drops cases that meet a condition)
+    drop varlist            (drops specified variables from the dataset)
+    drop if condition       (drops cases that meet a condition)
 
-keep varlist            (keeps only specified variables)
-keep if condition       (keeps only cases that meet a condition)
+    keep varlist            (keeps only specified variables)
+    keep if condition       (keeps only cases that meet a condition)
+{: .lh-tight }
 
 Dropping variables is like deleting columns in a spreadsheet. Dropping observations/cases is like deleting rows in a spreadsheet. Obviously, use these with caution.
 
