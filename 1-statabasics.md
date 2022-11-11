@@ -28,8 +28,7 @@ Abbreviations: Stata will accept abbreviated commands. You can use as few letter
 
 <p>
 <code>
- di 2 + 2
- 
+ di 2 + 2 <br>
  dis <em>sqrt(49)</em> + 10
 </code>
 </p>
