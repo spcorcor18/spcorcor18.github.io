@@ -26,10 +26,10 @@ Note: `sqrt` is one of Stata's many functions.
 
 Abbreviations: Stata will accept abbreviated commands. You can use as few letters as you like, so long as the abbreviation remains unique to one command. If you use abbreviations, I recommend using at least as many letters that are needed for others reading your syntax to recognize the command.
 
-<code>
+<pre>
  di 2 + 2
  dis *sqrt(49)* + 10
-</code>
+</pre>
 
 Common mathematical operators include +, -, \*, and /.  The exponent symbol is \^, for example: `di 7^2`. For longer expressions, use parentheses to make the intended order of operations clear. For example: `di (7+2)*4`. Type `help functions` to see a complete list of functions and operations.
 
