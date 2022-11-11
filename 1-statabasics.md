@@ -27,10 +27,27 @@ Abbreviations: Stata will accept abbreviated commands. You can use as few letter
     di 2 + 2
     dis sqrt(49) + 10
 
-Common mathematical operators include +, -, `*, and /.  The exponent symbol is `^, for example: `di 7^2`. For longer expressions, use parentheses to make the intended order of operations clear. For example: `di (7+2)*4`. Type `help functions` to see a complete list of functions and operations.
+Common mathematical operators include +, -, \*, and /.  The exponent symbol is \^, for example: `di 7^2`. For longer expressions, use parentheses to make the intended order of operations clear. For example: `di (7+2)*4`. Type `help functions` to see a complete list of functions and operations.
 
 The Expression Builder window is useful for constructing more complicated calculations that make use of operations, functions, saved results, and more. This is found under Data - Other Utilities - Hand Calculator - Create.
 
 You may also use `display` for text expressions, for example:
 
     display "hello"
+
+### Opening a data file in Stata format (.dta file)
+
+    use C:\data\myfilename.dta
+    use http://www.stata-press.com/data/r9/census2
+
+Note that file names with spaces must be in quotes. I generally use quotation marks whether they are required or not.
+
+    use “C:\data\my file name.dta”
+
+The clear option tells Stata to remove any dataset already in memory and replace it with the specified one. Use this with caution, since unsaved changes will be lost. Most Stata commands have options that can be specified at the end of the line, following a comma:
+
+	use C:\data\myfilename.dta, clear
+
+Stata has some built-in datasets you can use to learn Stata. Type `help dta_examples` to see a list. You can open sample datasets directly using `sysuse`. A very common one is auto.dta:
+
+	sysuse auto.dta
