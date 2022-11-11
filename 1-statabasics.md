@@ -15,6 +15,7 @@
     help keyword
     help regress
     help summarize
+{: .lh-tight }
 
 ###	"Using Stata as a calculator"
 
