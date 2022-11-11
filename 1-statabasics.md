@@ -161,37 +161,42 @@ Stata refers to var1-var5 as a "varlist". The syntax indicates to Stata that it 
 
 Dropping variables is like deleting columns in a spreadsheet. Dropping observations/cases is like deleting rows in a spreadsheet. Obviously, use these with caution.
 
-12. .do-files are programs—a set of instructions—that Stata will carry out when you Run it. These are created in the Do-File Editor. Some useful commands often found in .do files:
+### .do-files 
 
-cd C:\mydirectory\      (set the working directory)
-cd “C:\Data\Class”
+Do-files are programs--a set of instructions--that Stata will carry out when you Run it. These are created in the Do-File Editor. Some useful commands often used in .do files:
 
-* Comments in do file   (single line of commented text)
-// Comments in do file  (single line of commented text)
-/* Comments */          (multiple lines of commented text)
+    cd C:\mydirectory\      (set the working directory)
+    cd “C:\Data\Class”
 
-version                 (displays the current version of Stata)
-version 10          (requires Stata be version 10+ to proceed)
-clear all               (removes everything from memory)
-set more off            (prevents Stata from pausing display)
-set linesize 80     (sets display width – avoids awkward wrap)
+    * Comments in do file   (single line of commented text)
+    // Comments in do file  (single line of commented text)
+    /* Comments */          (multiple lines of commented text)
 
-# delimit ;         (set the line delimiter as a semicolon if your 
-   commands will extend for multiple lines)
-///                 (alternatively, use this at the end of the line if
+    version                 (displays the current version of Stata)
+    version 10          (requires Stata be version 10+ to proceed)
+    clear all               (removes everything from memory)
+    set more off            (prevents Stata from pausing display)
+    set linesize 80     (sets display width – avoids awkward wrap)
+
+    # delimit ;         (set the line delimiter as a semicolon if your 
+        commands will extend for multiple lines)
+    ///                 (alternatively, use this at the end of the line if
                        your command extends to the next line)
-# delimit cr            (reset the line delimiter to be a hard return)
+    # delimit cr            (reset the line delimiter to be a hard return)
 
-It is possible to copy and paste commands from the Review (or Command) window into the .do file. This allows you to “test” your command to see if it does what you want it to do, before including it. Do-files can be executed all at once, or in subsections (highlight the section you want to run, and click on the Execute (do) button).
+It is possible to copy and paste commands from the Review (or Command) window into the .do file. This allows you to "test" your command to see if it does what you want it to do, before including it. Do-files can be executed all at once, or in subsections (highlight the section you want to run, and click on the Execute (do) button).
 
-13. Mac versus PC: the most notable difference between Stata on the Mac (vs PC) is how the working directories are set. PC uses backslashes: cd “C:\Users\Sean” while Mac uses forward slashes: cd “/Users/Sean”.
+### Mac versus PC
 
-On a PC, the command cd Sean will return an error message. On a Mac, the command cd Sean will set the working directory to the subfolder titled “Sean” in your current working directory, assuming it exists. 
+The most notable difference between Stata on the Mac (vs PC) is how the working directories are set. PC uses backslashes: cd "C:\Users\Sean" while Mac uses forward slashes: cd "/Users/Sean".
 
-Note the command pwd displays the current working directory (both PC and Mac). On the PC, the command cd (without arguments) also does this. However, on the Mac, cd (without arguments) when you are in a subfolder changes the working directory one level up.
+On a PC, the command `cd Sean` will return an error message. On a Mac, the command `cd Sean` will set the working directory to the subfolder titled Sean in your current working directory, assuming it exists. 
+
+Note the command `pwd` displays the current working directory (both PC and Mac). On the PC, the command `cd` (without arguments) also does this. However, on the Mac, `cd` (without arguments) when you are in a subfolder changes the working directory one level up.
 
 The following code in a .do file will help you move between Mac and PC:
 
+<code style="display:block; white-space:pre-wrap;padding:10px">
 if regexm(c(os),"Mac")==1 {
    local mypath= "/Users/Sean"
    }
@@ -210,78 +215,93 @@ capture log close           (can be placed at the top of a do-file
 to ensure no log file is currently open)
         cmdlog using filename       (logs only commands, not output)
         cmdlog close                (stop logging commands)
+</code>
 
-15. Creating new variables – note expressions can include arithmetic operations (+, -, *, /),  mathematical functions, statistical functions, random number functions, string functions, date functions, and other (type help functions for a complete list, or use the Expression Builder mentioned earlier).
+### Creating new variables 
 
-generate    newvar = expression
-gen     aplusb = vara + varb
+Note expressions can include arithmetic operations (+, -, \*, /),  mathematical functions, statistical functions, random number functions, string functions, date functions, and other (type `help functions` for a complete list, or use the Expression Builder mentioned earlier).
+
+    generate    newvar = expression
+    gen     aplusb = vara + varb
 
 When creating complicated expressions, be sure to pay attention to order of operations, as mentioned earlier.
 
-16. Replacing values of existing variables – you can replace values of existing variables using the replace command. For example, the first command below will divide all existing values of var1 by 100. The second example will replace the value of state with NY whenever state is equal to New York. Note the use of the double equals sign for the if condition.
+### Replacing values of existing variables
 
-replace var1 = var1/100
-replace state = “NY” if state==”New York”
+You can replace values of existing variables using the `replace` command. For example, the first command below will divide all existing values of var1 by 100. The second example will replace the value of state with NY whenever state is equal to New York. Note the use of the double equals sign for the `if` condition.
 
-17. Labeling variables – can also be done in Variables Manager or Properties window.
+    replace var1 = var1/100
+    replace state = “NY” if state==”New York”
 
-label var varname “Descriptive label here”
+### Labeling variables 
 
-18. Renaming variables and attaching notes
+Note this can also be done in Variables Manager or Properties window.
 
-rename oldvarname newvarname
+    label var varname “Descriptive label here”
+
+### Renaming variables and attaching notes
+
+    rename oldvarname newvarname
 
 Some researchers prefer not to rename variables (which could risk losing information about the original variable name). Rather, a copy of the old variable can be made. It is also possible to attach notes to variables:
 
     notes var1: Insert note here    (specify a note for var1)
-    notes var1              (view the note for var1)
+    notes var1                      (view the note for var1)
 
-19. Stata treats numeric missing values (“.”) as the largest positive number, so use extreme caution when using the > operator when there are missing values.  For example, the following would code elderly as “1” in cases where age is missing:
+### Missing values 
 
-gen elderly = 0 if age<65
-replace elderly = 1 if age>=65
+Note Stata treats numeric missing values (".") as the largest positive number, so use extreme caution when using the > operator when there are missing values.  For example, the following would code elderly as "1" in cases where age is missing:
 
-20. Sorting data
+    gen elderly = 0 if age<65
+    replace elderly = 1 if age>=65
 
-sort varlist            (sorts in ascending order by varlist)
-gsort –varname          (sorts in descending order by varname)
+### Sorting data
+
+    sort varlist            (sorts in ascending order by varlist)
+    gsort –varname          (sorts in descending order by varname)
 
 
-21. Using “by” groups
+### Using "by" groups
 
-sort var1
-by var1: sum var2
+    sort var1
+    by var1: sum var2
 
-In the second statement above, the command sum var2 will be executed separately for each unique value of var1. Therefore, this approach should only be used when there are a manageable number of values/categories for var1.
+In the second statement above, the command `sum var2` will be executed separately for each unique value of *var1*. Therefore, this approach should only be used when there are a manageable number of values/categories for *var1*.
 
-22. User-written commands (.ado files). “SSC” is Statistical Software Components at Boston College, and is a common repository for .ado files. Examples:
+### User-written commands (.ado files)
 
-help nmissing
-ssc install nmissing    (installs .ado file called “nmissing”)
+"SSC" is Statistical Software Components at Boston College, and is a common repository for .ado files. The user-written command `nmissing` below is useful for getting a report on the number of missing values for all (or specified) variables:
 
-23. The wildcard symbol (*) allows you to apply a command to numerous variables with the same prefix or suffix. For example:
+    help nmissing
+    ssc install nmissing    (installs .ado file called “nmissing”)
 
-summarize gdp19*
-drop pop*
+### The wildcard symbol (\*) 
+
+The wildcard symbol allows you to apply a command to numerous variables with the same prefix or suffix. For example:
+
+    summarize gdp19*
+    drop pop*
 
 Use the wildcard with caution, to avoid doing things to variables you did not intend to change.
 
-24. Debugging do-files – Stata provides (often uninformative) error numbers that can be looked up. With a little experience, it becomes easy to catch errors. The most common bugs are errors in syntax:
+### Debugging do-files 
 
-•   Not using correct symbols in condition statement (e.g. double equals sign)
-•   Misspelling of command name and/or variable names
-•   Capitalizing letters in variable names that shouldn’t be capitalized, or not capitalizing letters when they should be
-•   Spaces where none should be
-•   Incorrect options
-•   Options in the wrong place
-•   Variables are the wrong type for the desired command (e.g. string vs. numeric)
+Stata provides (often uninformative) error numbers that can be looked up. With a little experience, it becomes easy to catch errors. The most common bugs are errors in syntax:
+
+* Not using correct symbols in condition statement (e.g. double equals sign)
+* Misspelling of command name and/or variable names
+* Capitalizing letters in variable names that shouldn’t be capitalized, or not capitalizing letters when they should be
+* Spaces where none should be
+* Incorrect options
+* Options in the wrong place
+* Variables are the wrong type for the desired command (e.g. string vs. numeric)
 
 Some strategies for de-bugging:
 
-•   Try running the program in steps (sections of the do-file)
-•   Try running the program on different data
-•   Use tracing (use set trace on)
-•   Restart and/or update Stata (use update all)
+* Try running the program in steps (sections of the do-file)
+* Try running the program on different data
+* Use tracing (use set trace on)
+* Restart and/or update Stata (use update all)
 
 
 
