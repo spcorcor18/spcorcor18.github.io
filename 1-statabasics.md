@@ -37,8 +37,10 @@ You may also use `display` for text expressions, for example:
 
 ### Opening a data file in Stata format (.dta file)
 
-    use C:\data\myfilename.dta
-    use http://www.stata-press.com/data/r9/census2
+```r
+use C:\data\myfilename.dta
+use http://www.stata-press.com/data/r9/census2
+```
 
 Note that file names with spaces must be in quotes. I generally use quotation marks whether they are required or not.
 
