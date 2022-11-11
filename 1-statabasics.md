@@ -60,6 +60,7 @@ Stata has some built-in datasets you can use to learn Stata. Type `help dta_exam
 
     save "C:\data\my file name.dta"
     save "C:\data\anotherfile.dta", replace
+{: .lh-tight }
 
 If the file already exists and you want to replace it with the version currently in memory, use the `replace` option. The same rule for quotes applies as noted earlier.
 
@@ -86,6 +87,7 @@ Reviewing the contents of a dataset – use the Variables and Properties windows
     inspect varname (to get a little more information about a variable)
     count           (to see the number of observations)
     count if condition  (to see the number of obs. where a condition is true)
+{: .lh-tight }
 
 Note that Stata is case-sensitive! You must type variable names exactly as they appear in the 
 Variables window.
@@ -97,9 +99,9 @@ Numeric variables are stored in different ways, depending on the size and precis
     summarize
     sum varnames
     sum varnames, detail
-
     tabulate varname        (this command has many options)
     table varname           (this command has many options)
+{: .lh-tight }
 
 ### if and in clauses, conditions
 
@@ -109,6 +111,7 @@ The `if` clause tells Stata to execute a command only for cases where the `if` c
     summarize varname if varname2~="N"
     sum varname if varname2>=500
     list varlist if _n < 40 (_n refers to the observation number)
+{: .lh-tight }
 
 Note equality conditions require two equals signs. An inequality condition (“not equal to”) requires `~=` or `!=`. Conditions can include > or < signs, as well as greater-than-or-equal-to (>=) and less-than-or-equal-to (<=) signs.
 
@@ -116,17 +119,20 @@ You can also include AND or OR conditions in a statement, where AND is designate
 
     sum enroll if state==”NY” | state==”NJ” | state==”CT”
     sum puptch if state==”NY” & enroll>250
+{: .lh-tight }
 
 Be very careful when specifying the logic of a complex “if” clause. Use parentheses when needed. For example, the following two statements will not yield the same result:
 
     sum enroll if state==”NY” | state==”NJ” & enroll>1000
     sum enroll if (state==”NY” | state==”NJ”) & enroll>1000
+{: .lh-tight }
 
 Stata has special notation for missing values that depend on whether the variable is numeric or a string. If numeric, missing values are represented by a period. If string, missing values are represented by a pair of double quotes, as shown below.
 
     count if numvar1==. 
     summ var2 if numvar1~=.
     list var1 var2 if strvar1==””
+{: .lh-tight }
 
 ### Designating the order of variables listed in the Variables window 
 
@@ -134,11 +140,13 @@ This is useful when your dataset contains a large number of variables. You can a
 
     order varlist
     aorder              (alphabetizes list of variables)
+{: .lh-tight }
 
 The order of variables in the Variables window is important when you wish to use variable lists as shorthand. For example, if variables var1 through var5 are sorted in alphabetical order in the Variables window, then the following two commands are equivalent:
 
     sum var1-var5
     sum var1 var2 var3 var4 var5
+{: .lh-tight }
 
 Stata refers to var1-var5 as a “varlist”. The syntax indicates to Stata that it is a list of variables. Another type of varlist uses the wildcard symbol, e.g.: sum var* Here, you’re telling Stata to execute the command for all variables starting with “var”.
 
