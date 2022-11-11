@@ -48,7 +48,7 @@ Note that file names with spaces must be in quotes. I generally use quotation ma
 
     use "C:\data\my file name.dta"
 
-The `clear` option tells Stata to remove any dataset already in memory and replace it with the specified one. Use this with caution, since unsaved changes will be lost. Most Stata commands have options that can be specified at the end of the line, following a comma:
+Most Stata commands have options that can be specified at the end of the line, following a comma. The `clear` option tells Stata to remove any dataset already in memory and replace it with the specified one. Use this with caution, since unsaved changes will be lost: 
 
 	use C:\data\myfilename.dta, clear
 
@@ -61,15 +61,15 @@ Stata has some built-in datasets you can use to learn Stata. Type `help dta_exam
     save "C:\data\my file name.dta"
     save "C:\data\anotherfile.dta", replace
 
-If the file already exists and you want to replace it with the version currently in memory, use the `replace` option. The same rule for quotes applies as in #4.
+If the file already exists and you want to replace it with the version currently in memory, use the `replace` option. The same rule for quotes applies as noted earlier.
 
-## Closing a Stata dataset
+### Closing a Stata dataset
 
 To close a dataset (remove it from memory) use the command `clear`. This takes it out of memory, but does not delete it from your disk. As with any other file, don't "clear" data from memory if you have changes that you intended to save.
 
-## Reviewing the contents of a dataset
+### Reviewing the contents of a dataset
 
-Reviewing the contents of a dataset – use the Variables and Properties windows, the Variables manager (Data  Variables Manager), and/or these commands:
+Reviewing the contents of a dataset – use the Variables and Properties windows, the Variables manager (Data--Variables Manager), and/or these commands:
 
     browse      (allows you to view the data like a spreadsheet)
     edit            (allows you to edit the data like a spreadsheet—not advised)
@@ -94,42 +94,46 @@ Numeric variables are stored in different ways, depending on the size and precis
 
 ### Simple descriptive statistics, tables,  and frequency distributions
 
-summarize
-sum varnames
-sum varnames, detail
+    summarize
+    sum varnames
+    sum varnames, detail
 
-tabulate varname        (this command has many options)
-table varname           (this command has many options)
+    tabulate varname        (this command has many options)
+    table varname           (this command has many options)
 
-9.  if and in clauses – The if clause tells Stata to execute a command only for cases where the if clause applies. The in clause tells Stata to execute the command only for cases with the specified range of observation numbers. Use the latter with caution, since the sort order of your data can change. Examples:
+### if and in clauses, conditions
 
-summarize varname if varname2==”Y”
-summarize varname if varname2~=”N”
-sum varname if varname2>=500
-list varlist if _n < 40 (_n refers to the observation number)
+The `if` clause tells Stata to execute a command only for cases where the `if` clause applies. The `in` clause tells Stata to execute the command only for cases with the specified range of observation numbers. Use the latter with caution, since the sort order of your data can change. Examples:
 
-Note equality conditions require two equals signs. An inequality condition (“not equal to”) requires ~= or !=. Conditions can include > or < signs, as well as greater-than-or-equal-to (>=) and less-than-or-equal-to (<=) signs.
+    summarize varname if varname2=="Y"
+    summarize varname if varname2~="N"
+    sum varname if varname2>=500
+    list varlist if _n < 40 (_n refers to the observation number)
+
+Note equality conditions require two equals signs. An inequality condition (“not equal to”) requires `~=` or `!=`. Conditions can include > or < signs, as well as greater-than-or-equal-to (>=) and less-than-or-equal-to (<=) signs.
 
 You can also include AND or OR conditions in a statement, where AND is designated by a “&” and OR is designated by a “|”. Examples:
 
-sum enroll if state==”NY” | state==”NJ” | state==”CT”
-sum puptch if state==”NY” & enroll>250
+    sum enroll if state==”NY” | state==”NJ” | state==”CT”
+    sum puptch if state==”NY” & enroll>250
 
 Be very careful when specifying the logic of a complex “if” clause. Use parentheses when needed. For example, the following two statements will not yield the same result:
 
-        sum enroll if state==”NY” | state==”NJ” & enroll>1000
-   sum enroll if (state==”NY” | state==”NJ”) & enroll>1000
+    sum enroll if state==”NY” | state==”NJ” & enroll>1000
+    sum enroll if (state==”NY” | state==”NJ”) & enroll>1000
 
 Stata has special notation for missing values that depend on whether the variable is numeric or a string. If numeric, missing values are represented by a period. If string, missing values are represented by a pair of double quotes, as shown below.
 
-        count if numvar1==. 
-        summ var2 if numvar1~=.
-        list var1 var2 if strvar1==””
+    count if numvar1==. 
+    summ var2 if numvar1~=.
+    list var1 var2 if strvar1==””
 
-10. Designating the order of variables listed in the Variables window – useful when your dataset contains a large number of variables. You can also sort the viewing order of variables (temporarily) in the Variables window by clicking on the column you wish to sort by (e.g., variable name or variable label)..
+### Designating the order of variables listed in the Variables window 
 
-order varlist
-aorder              (alphabetizes list of variables)
+This is useful when your dataset contains a large number of variables. You can also sort the viewing order of variables (temporarily) in the Variables window by clicking on the column you wish to sort by (e.g., variable name or variable label).
+
+    order varlist
+    aorder              (alphabetizes list of variables)
 
 The order of variables in the Variables window is important when you wish to use variable lists as shorthand. For example, if variables var1 through var5 are sorted in alphabetical order in the Variables window, then the following two commands are equivalent:
 
