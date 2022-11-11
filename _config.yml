@@ -1,5 +1,5 @@
 title: Stata resources
 description: This is just a test.
-remote_theme: tomjoht/documentation-theme-jekyll
+remote_theme: just-the-docs/just-the-docs
 plugins:
 - jekyll-remote-theme
