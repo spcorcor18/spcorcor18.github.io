@@ -7,7 +7,6 @@
 * Review, Variables, Properties, and Results windows
 * Paging up/down in the Command window to pull up recent commands
 * Double-clicking commands in the Review window
-{: .lh-tight }
 
 ###	Getting help: syntax
 
@@ -21,6 +20,7 @@
 
 	display 2 + 2
 	display sqrt(49) + 10
+{: .lh-tight }
 
 Note: `sqrt` is one of Stata's many functions.
 
