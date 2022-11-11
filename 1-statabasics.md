@@ -25,10 +25,10 @@ Note: `sqrt` is one of Stata's many functions.
 
 Abbreviations: Stata will accept abbreviated commands. You can use as few letters as you like, so long as the abbreviation remains unique to one command. If you use abbreviations, I recommend using at least as many letters that are needed for others reading your syntax to recognize the command.
 
-    <code style="display:block; white-space:pre-wrap;padding:10px;color: crimson">
-     di 2 + 2 
-     dis <em>sqrt(49)</em> + 10
-    </code>
+<code style="display:block; white-space:pre-wrap;padding:10px;color: crimson">
+ di 2 + 2 
+ dis <em>sqrt(49)</em> + 10
+</code>
 
 Common mathematical operators include +, -, \*, and /.  The exponent symbol is \^, for example: `di 7^2`. For longer expressions, use parentheses to make the intended order of operations clear. For example: `di (7+2)*4`. Type `help functions` to see a complete list of functions and operations.
 
@@ -40,10 +40,10 @@ You may also use `display` for text expressions, for example:
 
 ### Opening a data file in Stata format (.dta file)
 
-    <code style="display:block; white-space:pre-wrap;padding:10px;color: crimson">
-    use <em>C:\data\myfilename.dta</em>
-    use <em>http://www.stata-press.com/data/r9/census2</em>
-    </code>
+<code style="display:block; white-space:pre-wrap;padding:10px;color: crimson">
+use <em>C:\data\myfilename.dta</em>
+use <em>http://www.stata-press.com/data/r9/census2</em>
+</code>
 
 Note that file names with spaces must be in quotes. I generally use quotation marks whether they are required or not.
 
