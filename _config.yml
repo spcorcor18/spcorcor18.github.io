@@ -1,6 +1,12 @@
 title: Stata resources
 description: This is just a test.
 remote_theme: just-the-docs/just-the-docs
+markdown: kramdown
 highlighter: rouge
+kramdown:
+  input: GFM
+  syntax_highlighter_opts:
+    default_lang: stata
+    css_class: 'highlight'
 plugins:
 - jekyll-remote-theme
