@@ -1,5 +1,6 @@
 title: Stata resources
 description: This is just a test.
 remote_theme: just-the-docs/just-the-docs
+highlighter: rouge
 plugins:
 - jekyll-remote-theme
