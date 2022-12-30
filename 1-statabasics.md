@@ -10,10 +10,10 @@
 ###	Getting help: syntax
 
 {% highlight stata %}
-    help
-    help keyword
-    help regress
-    help summarize
+help
+help keyword
+help regress
+help summarize
 {% endhighlight %}
 
     help
