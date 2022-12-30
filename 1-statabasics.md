@@ -9,6 +9,13 @@
 
 ###	Getting help: syntax
 
+{% highlight stata %}
+    help
+    help keyword
+    help regress
+    help summarize
+{% endhighlight %}
+
     help
     help keyword
     help regress
