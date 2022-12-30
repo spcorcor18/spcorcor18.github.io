@@ -9,7 +9,7 @@
 
 ###	Getting help: syntax
 
-{% highlight stata %}
+{% highlight Stata %}
 help
 help keyword
 help regress
