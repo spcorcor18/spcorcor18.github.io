@@ -9,6 +9,13 @@
 
 ###	Getting help: syntax
 
+```stata
+help
+help keyword
+help regress
+help summarize
+```
+
     help
     help keyword
     help regress
