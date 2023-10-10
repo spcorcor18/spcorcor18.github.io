@@ -7,6 +7,8 @@
 * Paging up/down in the Command window to pull up recent commands
 * Double-clicking commands in the Review window
 
+![Stata](stata.PNG)
+
 ###	Getting help: syntax
 
     help
